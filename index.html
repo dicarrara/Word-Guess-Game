@@ -11,10 +11,14 @@
         <div>
          <h1>Word Guess Game</h1>
 
-         <p id="directions-text">Press any key to get started!</p>
+         <p id="directions-text">Press the key to get started!</p>
+         <p id="wins-text"></p>
+         <p id="loses-text"></p>
          <p id="userchoice-text"></p>
-         <p id="letter-text"></p>
-         
+         <p id="word-letters"></p>
+         <p id="guesses-text"></p>
+
+        
 
         </div>
 
@@ -25,47 +29,65 @@
 
         var words = ["jazz", "love", "dance", "coffee"];
 
+        //var wins = 0;
+        //var loses = 0;
+
         // how to start the game if any key is pressed? (onekeyUp?)
         // to change the text in p after the game is started
         // Hide the directions
         var directionsText = document.getElementById("directions-text");
         var userChoiceText = document.getElementById("userchoice-text");
-        var ChooseTheLetter = document.getElementById("letter-text");
+        var lettersText = document.getElementById("word-letters");
+        var winUserText = document.getElementById("wins-text");
+        var losesUserText = document.getElementById("loses-text");
+        var guessesLeftText = document.getElementById("guesses-text");      
        
 
         document.onkeyup = function(event) {
-            var GameStart = event.key;
-
-            if (event.key) {
-                directionsText.textContent = "";                
-                alert("The game is started. ");
-            }
-        }
-
-        var word = words[Math.floor(Math.random() * words.length)];
-
-        console.log(word);
-        
-        ChooseTheLetterText.textContent = "Press the key";
-                        
-        document.onkeyup = function(event) {
             var userGuess = event.key;
+        
+            var word = words[Math.floor(Math.random() * words.length)];
+            console.log(word);
 
-            if (event.key) {
-                userChoiceText.textContent = "You chose: " + userGuess;
+            //How many letters we have in a word? how would it show as underscores?_ _ _ on a screen? 
+            var lettersInWord = [];
+            for (var i=0; i< word.length; i++) {
+                lettersInWord[i] = "_";
+            }
 
+            var guesses = 12;
+            
+            // How many letters left to guess
+            var letterToGuess = word.length;
+                                                
+           
+        //do the loop until user guess the word ( letterToGuess > 0 ?? ), while doing the loop, if user guessed letter in our word add the letter into
+        //showing word at the screen. (++?) and show the letter on the screen. (remaining--)
+        // should to use if else here, but how to add !do the loop until user guess the word ( letterToGuess < word.length?? )!
+           while (letterToGuess > 0) {
+               alert(lettersInWord.join(" "))
 
-        //How do I know how long the word is? Do I need to make the loop? Or indexOf? If I will make the loop can I display it as _ _ _? 
+               for(var j=0; j < word.length; j++) {
+                   if (word[j] === userGuess) {
+                       lettersInWord[j] = userGuess;
+                       letterToGuess--;
+                   }
+
+                   else {
+                       guesses--;
+                   }
+               }
+           }
+
+           // is that a right direction to display message on a screen?
+
+        directionsText.textContent = "";  
+        userChoiceText.textContent = "You chose " + userGuess;
+        lettersText.textContent = "Letters in a word" + lettersInWord;
+        guessesLeftText.textContent = "Guesses left: " + guesses;
+           
  
-
- 
-        // LOOP! do the loop until user guess the word (while i< word.length?? ), while doing the loop, if user guessed letter in our word add the letter into
-        //showing word at the screen. (++?) 
-
-        for (var i=0; i < word.length; i++) {
-            if (word[i] === )
-
-        }
+    }
         
 
 
