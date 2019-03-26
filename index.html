@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title> Word Guess Game </title>
+
+    </head>
+
+    <body>
+
+        <div>
+         <h1>Word Guess Game</h1>
+
+         <p id="directions-text">Press any key to get started!</p>
+         <p id="userchoice-text"></p>
+         <p id="letter-text"></p>
+         
+
+        </div>
+
+        
+        <script type="text/javascript">
+
+        // array of words
+
+        var words = ["jazz", "love", "dance", "coffee"];
+
+        // how to start the game if any key is pressed? (onekeyUp?)
+        // to change the text in p after the game is started
+        // Hide the directions
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var ChooseTheLetter = document.getElementById("letter-text");
+       
+
+        document.onkeyup = function(event) {
+            var GameStart = event.key;
+
+            if (event.key) {
+                directionsText.textContent = "";                
+                alert("The game is started. ");
+            }
+        }
+
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        console.log(word);
+        
+        ChooseTheLetterText.textContent = "Press the key";
+                        
+        document.onkeyup = function(event) {
+            var userGuess = event.key;
+
+            if (event.key) {
+                userChoiceText.textContent = "You chose: " + userGuess;
+
+
+        //How do I know how long the word is? Do I need to make the loop? Or indexOf? If I will make the loop can I display it as _ _ _? 
+ 
+
+ 
+        // LOOP! do the loop until user guess the word (while i< word.length?? ), while doing the loop, if user guessed letter in our word add the letter into
+        //showing word at the screen. (++?) 
+
+        for (var i=0; i < word.length; i++) {
+            if (word[i] === )
+
+        }
+        
+
+
+        
+        
+        
+        </script>
+
+    </body>
+</html>
