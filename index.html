@@ -3,101 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title> Word Guess Game </title>
+        <script src="assets/javascript/game.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     </head>
 
     <body>
-
-        <div>
-         <h1>Word Guess Game</h1>
-
-         <p id="direction">Press the key to get started!</p>
-         <p id="userchoice"></p>
-         <p id="letters"></p>
-         <p id="guesses"></p>
-
         
+        
+        <div class="container">
+         
+        
+         <h1>Volcanoes Guess Game</h1>
+
+         <p id="directions">Press the key to get started!</p>
+         <p id="wins">1</p>
+         <p id="loses">2</p>
+         <p id="userchoice">3</p>
+         <p id="word-letters">4</p>
+         <p id="guesses">5</p>
 
         </div>
 
         
-        <script type="text/javascript">
-
-        // 1 we need array of words
-        var words = ["jazz", "love", "dance", "coffee"];
-     
-                  
-        var directionsText = document.getElementById("direction");
-
-            //var userChoiceText = document.getElementById("userchoice");
-            //var lettersText = document.getElementById("letters");
-            //var guessesLeftText = document.getElementById("guesses");  
-
-            //userChoiceText.textContent = "You chose " + guess;
-            //lettersText.textContent = "Letters in a word" + lettersInWord;
-            //guessesLeftText.textContent = "Guesses left: " + GuessesLeft;      
-
-
-       
-          // Press any key to get started! This function is run whenever the user presses a key.
-        document.onkeyup = function(event) {
-            // Determines which key was pressed.
-            var startGame = event.key;
-            alert("The Game is started  ");
-
-            //Randomly chooses a choice from the options array.
-            var word = words[Math.floor(Math.random() * words.length)];
-
-            console.log(word);
-
-            //How many letters we have in a word? how would it show as underscores?_ _ _ on a screen? 
-
-            var lettersInWord = [];
-            for (var i=0; i< word.length; i++) {
-                lettersInWord[i] = "_";
-            }
-
-            console.log(lettersInWord)
-
-            //Guesses we have, will change in a j loop
-            var GuessesLeft = 12;
-            
-            // How many letters left to guess
-            var letterToGuess = word.length;
-                 
-
-            //main loop. Do the loop until j < word.length, ++1 each loop, 
-
-             
-           
-           // is that a right direction to display message on a screen?
-
-
-           for (var j=0; j < word.length; j++) {
-                if (letterToGuess > 0) {
-                    alert(lettersInWord.join(" "))
-                    var guess = prompt("Guess the letter ");
-                        if (word[j] === guess) {                            
-                                lettersInWord[j] = guess;
-                                letterToGuess--;
-                        } else {
-                                GuessesLeft --;
-                                alert("you have another " + GuessesLeft )
-                        }
-                
-                }
-            }
-        
-        directionsText.textContent = "";  
-        document.getElementById("userchoice").innerHTML = "You chose " + guess;
-        document.getElementById("letters").innerHTML = "Letters in a word" + lettersInWord;
-        document.getElementById("guesses").innerHTML = "Guesses left" + GuessesLeft;
-        
-        
-        }    
-        
-      
-        </script>
 
     </body>
+
+
 </html>
