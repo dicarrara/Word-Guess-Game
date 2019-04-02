@@ -15,9 +15,9 @@
         // flags for our if else statements
         var gameStarted = false;   
         var hasFinished = false;
-        // storing our wins and loses
+        // storing our wins and looses
         var wins = 0;  
-        var loses = 0;  
+        var looses = 0;  
 
 
         // Function for reset the game
@@ -48,7 +48,7 @@
             document.getElementById("directions").innerText="";
             document.getElementById("guessing-word").innerText = "";
             document.getElementById("wins").innerText = "You won " + wins;
-            document.getElementById("loses").innerText = "You lose " + loses;
+            document.getElementById("looses").innerText = "You lose " + looses;
 
             for (var i = 0; i < guessingWord.length; i++) {
                 document.getElementById("guessing-word").innerText += guessingWord[i];
@@ -102,7 +102,7 @@
         // We need an array to store position of guessed letter in a string
             var positions = [];
             
-        // Loop through our word finding position for guessing letter.
+        // Loop through our word finding position for guessing.
             for (var i = 0; i < word.length; i++) {
                     if(word[i] === letter) {
                         positions.push(i);
@@ -123,7 +123,7 @@
         };
             
            
-        // Function to know if user won or lost. We are checking if there is no "_" in our word, if not than WIN++
+        // and what will happened if user checkWin. We are checkin gif there is no "_" in our word, if not htan WIN++
         function checkWin() { 
             if(guessingWord.indexOf("_") === -1) {
                 alert("Good job! The word was " + word + " Press any key to play again");
@@ -131,7 +131,7 @@
                 hasFinished = true;
             } else if (remainingGuesses === 0) {
                 alert("The word was " + word + " Press any key to try one more time ");
-                loses++;
+                looses++;
             }
 
         };
