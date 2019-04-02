@@ -15,9 +15,9 @@
         // flags for our if else statements
         var gameStarted = false;   
         var hasFinished = false;
-        // storing our wins and looses
+        // storing our wins and loses
         var wins = 0;  
-        var looses = 0;  
+        var loses = 0;  
 
 
         // Function for reset the game
@@ -48,7 +48,7 @@
             document.getElementById("directions").innerText="";
             document.getElementById("guessing-word").innerText = "";
             document.getElementById("wins").innerText = "You won " + wins;
-            document.getElementById("looses").innerText = "You lose " + looses;
+            document.getElementById("loses").innerText = "You lose " + loses;
 
             for (var i = 0; i < guessingWord.length; i++) {
                 document.getElementById("guessing-word").innerText += guessingWord[i];
@@ -131,7 +131,7 @@
                 hasFinished = true;
             } else if (remainingGuesses === 0) {
                 alert("The word was " + word + " Press any key to try one more time ");
-                looses++;
+                loses++;
             }
 
         };
