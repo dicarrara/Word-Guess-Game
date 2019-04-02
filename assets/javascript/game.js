@@ -1,50 +1,54 @@
         
-    
-        
+           
         //  array of words
         var words = ["atka", "augustine", "baker", "carrizozo", "fisher", "hood"];
         // max tries user have
         var maxTries = 10;    
         // storing the letters user have
         var guessedLetters = [];
-        // storing index of our selected word    
-        var IndexOfOurWord = [];        
+        // storing selected work in global, so any function can have access   
+        var word = [];        
         // word we need to build
         var guessingWord = [];
         // how many tries user have
         var remainingGuesses = 0; 
-
+        // flags for our if else statements
         var gameStarted = false;   
-        var hasFinished = false;            
-        var wins = 0;    
+        var hasFinished = false;
+        // storing our wins and looses
+        var wins = 0;  
+        var looses = 0;  
 
 
-        // How will we reset the game at the end ? function for reset
+        // Function for reset the game
 
         function resetGame() {
             remainingGuesses = maxTries;
             gameStarted = false;
 
-            IndexOfOurWord = Math.floor(Math.random() * (words.length));
+            word = words[Math.floor(Math.random() * words.length)];
+            console.log("the word is " + word)
+
 
             guessedLetters = [];
             guessingWord = [];
 
 
-            // how to build a guessingWord? with a loop
-            for (var i = 0; i < words[IndexOfOurWord].length; i++) {
+            // how to build a guessingWord? using a loop and show it on a screen as "_"
+            for (var i = 0; i < word.length; i++) {
                 guessingWord.push("_");
             }
-
                        
             updateDisplay();
         };
 
-        //  update display, so it is showing user progress on a screen
+        //  update display, so it is showing user progress on a screen.
         function updateDisplay () {
+
             document.getElementById("directions").innerText="";
-            
             document.getElementById("guessing-word").innerText = "";
+            document.getElementById("wins").innerText = "You won " + wins;
+            document.getElementById("looses").innerText = "You lose " + looses;
 
             for (var i = 0; i < guessingWord.length; i++) {
                 document.getElementById("guessing-word").innerText += guessingWord[i];
@@ -58,16 +62,18 @@
             }
 
         };
-            
-        document.onkeydown = function(event) {
-            // If we finished a game, so hasFinished === true, than we need to restart the game. And if we are playing, 
-            // we need to check if letter pressed. 
 
+
+            
+        document.onkeyup = function(event) {
+            // If we finished a game, so hasFinished === true, than we need to restart the game.
+            // we need to check if letter pressed. 
             if(hasFinished) {
                 resetGame();
                 hasFinished = false;
             } else {
-            // Check to make sure a-z was pressed.+ toLowerCase, so it match with our array
+            // How do we know that letter pressed? 
+            // Check to make sure a-z was pressed - using keyCode event + toLowerCase
                 if(event.keyCode >= 65 && event.keyCode <= 90) {
                 makeGuess(event.key.toLowerCase());
                 }
@@ -87,18 +93,18 @@
                 }
             }
                 
-                updateDisplay();
-                win();
+            updateDisplay();
+                
         };
 
-
+        // How to show correct letter in our guessing word?
         function evaluateGuess(letter) {
         // We need an array to store position of guessed letter in a string
             var positions = [];
             
-        // Loop through word finding all instances of guessed letter.
-            for (var i = 0; i < words[IndexOfOurWord].length; i++) {
-                    if(words[IndexOfOurWord][i] === letter) {
+        // Loop through our word finding position for guessing letter.
+            for (var i = 0; i < word.length; i++) {
+                    if(word[i] === letter) {
                         positions.push(i);
                     }
             }
@@ -113,15 +119,21 @@
                     guessingWord[positions[i]] = letter;
                 }
             }
+            checkWin();
         };
             
            
-        // and what will happened if user win
-        function win() {
+        // and what will happened if user checkWin. We are checkin gif there is no "_" in our word, if not htan WIN++
+        function checkWin() { 
             if(guessingWord.indexOf("_") === -1) {
+                alert("Good job! The word was " + word + " Press any key to play again");
                 wins++;
                 hasFinished = true;
-                }
+            } else if (remainingGuesses === 0) {
+                alert("The word was " + word + " Press any key to try one more time ");
+                looses++;
+            }
+
         };
             
    
