@@ -123,7 +123,7 @@
         };
             
            
-        // and what will happened if user checkWin. We are checkin gif there is no "_" in our word, if not htan WIN++
+        // Function to know if user won or lost. We are checking if there is no "_" in our word, if not than WIN++
         function checkWin() { 
             if(guessingWord.indexOf("_") === -1) {
                 alert("Good job! The word was " + word + " Press any key to play again");
