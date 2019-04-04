@@ -1,7 +1,7 @@
         
            
         //  array of words
-        var words = ["atka", "augustine", "baker", "carrizozo", "fisher", "hood"];
+        var words = ["Chicago Bulls", "New York Knicks", "Boston Celtics", "Golden State Warriors", "Denver Nuggets"];
         // max tries user have
         var maxTries = 10;    
         // storing the letters user have
